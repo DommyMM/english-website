@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Home, BookOpen, GamepadIcon, Globe, ChevronRight, ChevronLeft } from 'lucide-react'
+import { Home, BookOpen, GamepadIcon, Globe, Flag, ChevronRight, ChevronLeft } from 'lucide-react'
 import HomePage from './components/HomePage'
 import CaseStudies from './components/CaseStudies.jsx'
 import Research from './components/Research'
+import Conclusion from './components/Conclusion.jsx'
 import Sources from './components/Sources'
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'cases', 'research', 'sources']
+      const sections = ['home', 'cases', 'research', 'conclusion', 'sources']
       const scrollPosition = window.scrollY + 100
 
       sections.forEach(section => {
@@ -79,6 +80,18 @@ function App() {
               {isExpanded && <span>Research</span>}
             </button>
             <button
+              onClick={() => scrollToSection('conclusion')}
+              className={`w-full text-left rounded flex items-center gap-2 transition-colors duration-200 ${
+                activeSection === 'conclusion' 
+                ? 'bg-gray-700 text-blue-400' 
+                : 'text-gray-400 hover:bg-gray-700 hover:text-blue-400'
+              } ${isExpanded ? 'px-4 py-2' : 'justify-center py-2'}`}
+              title={!isExpanded ? "Conclusion" : ""}
+            >
+              <Flag className="w-4 h-4 flex-shrink-0" />
+              {isExpanded && <span>Conclusion</span>}
+            </button>
+            <button
               onClick={() => scrollToSection('sources')}
               className={`w-full text-left rounded flex items-center gap-2 transition-colors duration-200 ${
                 activeSection === 'sources' 
@@ -113,10 +126,14 @@ function App() {
             <CaseStudies />
           </section>
           
-          <section id="research" className="min-h-screen pt-16">
+          <section id="research" className="pt-12">
             <Research />
           </section>
           
+          <section id="conclusion" className="min-h-screen pt-12">
+            <Conclusion />
+          </section>
+
           <section id="sources" className="min-h-screen pt-16">
             <Sources />
           </section>

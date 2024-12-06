@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 const Sources = () => {
     const [citationStyle, setCitationStyle] = useState('apa')
-
     const sourcesData = [
         {
             id: 1,
@@ -39,7 +38,6 @@ const Sources = () => {
     const renderCitation = (source) => {
         const citation = source[citationStyle]
         const hasLink = source.doi || source.url
-        
         if (hasLink) {
             const link = source.doi ? `https://doi.org/${source.doi}` : source.url
             const linkText = source.doi ? '[DOI]' : '[URL]'
@@ -83,7 +81,6 @@ const Sources = () => {
                     </button>
                 </div>
             </div>
-
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4">
                 {sourcesData.map((source) => (
                     <div key={source.id} className="pl-8 -indent-8">

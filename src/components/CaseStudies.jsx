@@ -3,7 +3,6 @@ import { ChevronDown, ChevronRight, Book, Gamepad2, Crown } from 'lucide-react';
 
 const CaseStudy = ({ title, icon: Icon, color, summary, content, isExpanded, onToggle }) => {
     const elementRef = useRef(null);
-
     useEffect(() => {
         if (isExpanded && elementRef.current) {
         elementRef.current.scrollIntoView({ 
@@ -23,7 +22,6 @@ const CaseStudy = ({ title, icon: Icon, color, summary, content, isExpanded, onT
         <Icon className={`h-6 w-6 ${color}`} />
         <h3 className="text-2xl font-semibold flex-grow text-center">{title}</h3>
         </div>
-        
         <div className={`transition-all duration-300 ease-in-out ${
         isExpanded ? 'max-h-[1000px]' : 'max-h-0'
         } border-l-8 ${color} overflow-hidden`}>
@@ -31,7 +29,6 @@ const CaseStudy = ({ title, icon: Icon, color, summary, content, isExpanded, onT
             {content}
         </div>
         </div>
-        
         <div className={`transition-all duration-300 ease-in-out ${
         isExpanded ? 'max-h-0' : 'max-h-[1000px]'
         } overflow-hidden`}>
@@ -47,14 +44,12 @@ const CaseStudies = () => {
         genshin: false,
         wukong: false
     });
-
     const toggleCase = (caseId) => {
         setExpandedCases(prev => ({
         ...prev,
         [caseId]: !prev[caseId]
         }));
     };
-
     const cases = [
         {
             id: 'fgo',
@@ -202,7 +197,6 @@ const CaseStudies = () => {
         content: (
             <div className="space-y-6">
                 <p className="text-gray-200 text-center">An indie Chinese game following the legendary Monkey King that embraced its cultural roots</p>
-                
                 <div className="flex gap-4">
                     <div className=" rounded-lg overflow-hidden shadow-lg">
                         <img 
@@ -227,7 +221,7 @@ const CaseStudies = () => {
                         </div>
                         <div className="bg-gray-800 px-4 py-2 rounded shadow-lg">
                             <h4 className="font-medium mb-2 text-purple-400">Cultural Impact</h4>
-                            <p className="text-gray-300">"Greatly increased popularity of Wukong along with related topics upon launch</p>
+                            <p className="text-gray-300">Greatly increased popularity of Wukong along with related topics upon launch</p>
                         </div>
                     </div>
                 </div>
